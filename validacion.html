@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Verificación de Documento</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: Arial, Helvetica, sans-serif; }
+    body {
+      background-color: #f4f5f7;
+      color: #222222;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .container {
+      background: #ffffff;
+      width: 100%;
+      max-width: 950px;
+      padding: 24px;
+      border-radius: 6px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    h2 {
+      font-size: 18px;
+      margin-bottom: 20px;
+      color: #111;
+    }
+
+    /* Contenedor de la imagen (Paso 3) */
+    .image-wrapper {
+      width: 100%;
+      border: 1px solid #d3d3d3;
+      border-radius: 4px;
+      overflow: hidden;
+      margin-bottom: 24px;
+      background-color: #fafafa;
+    }
+
+    .image-wrapper img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* Botón de descarga para el PDF (Paso 4) */
+    .btn-descargar {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background-color: #3b66f5;
+      color: #ffffff;
+      border: none;
+      border-radius: 6px;
+      padding: 12px 28px;
+      font-size: 16px;
+      font-weight: 500;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background-color 0.2s;
+    }
+
+    .btn-descargar:hover {
+      background-color: #2c54dc;
+    }
+
+    .icon-dl {
+      width: 20px;
+      height: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h2>Vista de Verificación de Documento</h2>
+
+    <!-- PASO 3: Aquí se muestra la imagen PNG que tú subas a GitHub -->
+    <div class="image-wrapper">
+      <img id="docImage" src="documento1.png" alt="Documento Verificado">
+    </div>
+
+    <!-- PASO 4: Botón para visualizar y descargar el PDF -->
+    <button type="button" class="btn-descargar" onclick="descargarPDF()">
+      <svg class="icon-dl" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+        <polyline points="7 10 12 15 17 10"></polyline>
+        <line x1="12" y1="15" x2="12" y2="3"></line>
+      </svg>
+      Descargar Certificado PDF
+    </button>
+  </div>
+
+  <script>
+    // ================= CONFIGURACIÓN FÁCIL =================
+    // Cambia estos nombres según la imagen y PDF que subas para cada QR
+    const archivoImagen = "documento1.png"; // El nombre de tu PNG
+    const archivoPdf = "certificado1.pdf";     // El nombre de tu PDF
+    // ========================================================
+
+    // Cargar los archivos configurados
+    document.getElementById('docImage').src = archivoImagen;
+
+    function descargarPDF() {
+      // Abre el PDF en otra pestaña y activa la descarga automática
+      window.open(archivoPdf, '_blank');
+      const link = document.createElement('a');
+      link.href = archivoPdf;
+      link.download = archivoPdf;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+  </script>
+
+</body>
+</html>
