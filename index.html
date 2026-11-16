@@ -3,29 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Verificación de Documentos</title>
+  <title>Verificación - Paso 1 y 2</title>
   <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: Arial, Helvetica, sans-serif;
-    }
-
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: Arial, Helvetica, sans-serif; }
     body {
       background-color: #ffffff;
       color: #222222;
       min-height: 100vh;
-    }
-
-    /* ================= PANTALLA 1: CAPTCHA ================= */
-    #captcha-screen {
       display: flex;
       justify-content: center;
       align-items: flex-start;
       padding-top: 25px;
-      min-height: 100vh;
-      background-color: #ffffff;
     }
 
     .captcha-card {
@@ -142,216 +130,44 @@
     .btn-verificar:hover {
       background-color: #2c54dc;
     }
-
-    /* ================= PANTALLA 2: VERIFICACIÓN DE DOCUMENTOS ================= */
-    #document-screen {
-      display: none;
-      width: 100%;
-    }
-
-    .doc-header {
-      text-align: center;
-      padding: 18px 10px 14px 10px;
-      font-size: 14px;
-      font-weight: 700;
-      color: #111111;
-    }
-
-    .doc-header span.doc-num {
-      margin-left: 16px;
-    }
-
-    .table-wrapper {
-      width: 100%;
-      border-top: 2px solid #00825a;
-      border-bottom: 2px solid #00825a;
-      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.08);
-      overflow-x: auto;
-    }
-
-    table.doc-table {
-      width: 100%;
-      border-collapse: collapse;
-      min-width: 900px;
-    }
-
-    table.doc-table thead th {
-      background-color: #f3f4f4;
-      color: #222222;
-      font-size: 13px;
-      font-weight: 400;
-      text-align: left;
-      padding: 12px 18px;
-      border-bottom: 1px solid #e0e0e0;
-      vertical-align: middle;
-    }
-
-    table.doc-table thead th.col-fecha {
-      text-align: center;
-      line-height: 1.25;
-    }
-
-    table.doc-table thead th.col-caratula {
-      text-align: right;
-    }
-
-    table.doc-table tbody tr.main-row td {
-      background-color: #ffffff;
-      color: #222222;
-      font-size: 13px;
-      padding: 18px 18px;
-      border-bottom: 1px solid #e5e5e5;
-      vertical-align: middle;
-    }
-
-    table.doc-table tbody tr.main-row td.col-fecha {
-      text-align: center;
-    }
-
-    table.doc-table tbody tr.main-row td.col-caratula {
-      text-align: right;
-    }
-
-    .emisor-cell {
-      line-height: 1.35;
-    }
-
-    .emisor-line1 {
-      padding-left: 24px;
-    }
-
-    .emisor-line1 span.e-letra {
-      margin-left: 12px;
-    }
-
-    .btn-descargar {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      background: linear-gradient(to bottom, #f7f7f7 0%, #dcdcdc 100%);
-      border: 1.5px solid #222222;
-      border-radius: 3px;
-      padding: 4px 10px 4px 6px;
-      font-size: 12px;
-      font-weight: 700;
-      color: #111111;
-      text-decoration: none;
-      cursor: pointer;
-    }
-
-    .btn-descargar:hover {
-      background: linear-gradient(to bottom, #eeeeee 0%, #cfcfcf 100%);
-    }
-
-    .icon-dl-circle {
-      width: 18px;
-      height: 18px;
-      background-color: #3a3a3a;
-      border-radius: 50%;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .datos-adicionales-row td {
-      background-color: #fafafa;
-      padding: 12px 18px;
-      font-size: 13px;
-      color: #222222;
-    }
-
-    .datos-adicionales-row span.listados-txt {
-      margin-left: 12px;
-    }
   </style>
 </head>
 <body>
 
-  <!-- PANTALLA 1: CAPTCHA -->
-  <div id="captcha-screen">
-    <div class="captcha-card">
-      <h2>Verificar Captcha</h2>
+  <div class="captcha-card">
+    <h2>Verificar Captcha</h2>
 
-      <div class="recaptcha-box" id="recaptchaBox">
-        <div class="recaptcha-left" onclick="toggleCaptcha()">
-          <div class="checkbox-container">
-            <div class="checkbox-square"></div>
-            <!-- Ticket verde -->
-            <svg class="checkmark-svg" viewBox="0 0 24 24" fill="none">
-              <path d="M4.5 12.75L9.5 17.75L19.5 6.75" stroke="#009e52" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </div>
-          <span class="recaptcha-label">No soy un robot</span>
-        </div>
-
-        <div class="recaptcha-right">
-          <!-- Ícono estilo reCAPTCHA -->
-          <svg class="recaptcha-logo" viewBox="0 0 64 64">
-            <path fill="#1c3aa9" d="M32 10c-9.8 0-18.1 6.4-21 15.2l7.6 2.5C20.5 22 25.8 18 32 18c4.5 0 8.5 2.1 11.1 5.4L37 29.5h17v-17l-5.2 5.2C44.8 13 38.7 10 32 10z"/>
-            <path fill="#4285f4" d="M54 32c0-1.2-.1-2.4-.3-3.5l-7.9 1.4c.1.7.2 1.4.2 2.1 0 7.7-6.3 14-14 14-4.5 0-8.5-2.1-11.1-5.4L27 34.5H10v17l5.2-5.2C19.2 51 25.3 54 32 54c12.2 0 22-9.8 22-22z"/>
-            <path fill="#ababab" d="M18 32c0-1.5.2-3 .7-4.3l-7.6-2.5C10.4 27.3 10 29.6 10 32c0 2.5.4 4.9 1.2 7.1l7.5-2.7c-.5-1.4-.7-2.9-.7-4.4z"/>
+    <!-- ZONA DEL CAPTCHA -->
+    <div class="recaptcha-box" id="recaptchaBox" onclick="toggleCaptcha()">
+      <div class="recaptcha-left">
+        <div class="checkbox-container">
+          <div class="checkbox-square"></div>
+          <!-- Ticket verde que se activa al hacer clic -->
+          <svg class="checkmark-svg" viewBox="0 0 24 24" fill="none">
+            <path d="M4.5 12.75L9.5 17.75L19.5 6.75" stroke="#009e52" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
-          <span class="recaptcha-brand">reCAPTCHA</span>
         </div>
+        <span class="recaptcha-label">No soy un robot</span>
       </div>
 
-      <button type="button" class="btn-verificar" onclick="verificarCaptcha()">Verificar</button>
+      <div class="recaptcha-right">
+        <svg class="recaptcha-logo" viewBox="0 0 64 64">
+          <path fill="#1c3aa9" d="M32 10c-9.8 0-18.1 6.4-21 15.2l7.6 2.5C20.5 22 25.8 18 32 18c4.5 0 8.5 2.1 11.1 5.4L37 29.5h17v-17l-5.2 5.2C44.8 13 38.7 10 32 10z"/>
+          <path fill="#4285f4" d="M54 32c0-1.2-.1-2.4-.3-3.5l-7.9 1.4c.1.7.2 1.4.2 2.1 0 7.7-6.3 14-14 14-4.5 0-8.5-2.1-11.1-5.4L27 34.5H10v17l5.2-5.2C19.2 51 25.3 54 32 54c12.2 0 22-9.8 22-22z"/>
+          <path fill="#ababab" d="M18 32c0-1.5.2-3 .7-4.3l-7.6-2.5C10.4 27.3 10 29.6 10 32c0 2.5.4 4.9 1.2 7.1l7.5-2.7c-.5-1.4-.7-2.9-.7-4.4z"/>
+        </svg>
+        <span class="recaptcha-brand">reCAPTCHA</span>
+      </div>
     </div>
-  </div>
 
-  <!-- PANTALLA 2: VERIFICACIÓN DE DOCUMENTOS -->
-  <div id="document-screen">
-    <div class="doc-header">
-      Verificación de Documentos <span class="doc-num">Nº 123456905906</span>
-    </div>
-
-    <div class="table-wrapper">
-      <table class="doc-table">
-        <thead>
-          <tr>
-            <th style="width: 36%;">Certificado</th>
-            <th class="col-fecha" style="width: 11%;">Fecha<br>Emisión</th>
-            <th style="width: 13%;">Registro</th>
-            <th class="col-caratula" style="width: 8%;">Carátula</th>
-            <th style="width: 22%;">Emisor</th>
-            <th style="width: 10%;"></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr class="main-row">
-            <td>LISTADO DE BENEFICIARIOS</td>
-            <td class="col-fecha">13-11-2026</td>
-            <td>LISTADO PUBLICO</td>
-            <td class="col-caratula">0</td>
-            <td class="emisor-cell">
-              <div class="emisor-line1">Grupo Guias-Scouts <span class="e-letra">e</span></div>
-              <div>EDUARDO LLANOS</div>
-            </td>
-            <td style="text-align: right;">
-              <!-- Botón que abre el PDF en una pestaña y lo descarga automáticamente -->
-              <button type="button" class="btn-descargar" onclick="abrirYDescargarPDF()">
-                <span class="icon-dl-circle">
-                  <svg width="10" height="10" viewBox="0 0 12 12" fill="none">
-                    <path d="M4 2L8 6L4 10" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                  </svg>
-                </span>
-                Descargar
-              </button>
-            </td>
-          </tr>
-          <tr class="datos-adicionales-row">
-            <td colspan="6">
-              Datos Adicionales: - <span class="listados-txt">Listados</span>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+    <!-- BOTÓN VERIFICAR -->
+    <button type="button" class="btn-verificar" onclick="verificarCaptcha()">Verificar</button>
   </div>
 
   <script>
     let captchaChecked = false;
 
+    // Acción al pinchar el cuadro del captcha
     function toggleCaptcha() {
       captchaChecked = !captchaChecked;
       const box = document.getElementById('recaptchaBox');
@@ -362,29 +178,14 @@
       }
     }
 
+    // Acción al apretar el botón Verificar
     function verificarCaptcha() {
       if (!captchaChecked) {
         alert('Por favor, marca la casilla "No soy un robot" antes de verificar.');
         return;
       }
-      document.getElementById('captcha-screen').style.display = 'none';
-      document.getElementById('document-screen').style.display = 'block';
-    }
-
-    function abrirYDescargarPDF() {
-      // Nombre exacto del archivo PDF que subirás a tu repositorio de GitHub
-      const archivoPDF = 'certificado.pdf';
-
-      // 1. Mostrar el PDF en el navegador (nueva pestaña)
-      window.open(archivoPDF, '_blank');
-
-      // 2. Forzar la descarga automática del PDF
-      const link = document.createElement('a');
-      link.href = archivoPDF;
-      link.download = 'LISTADO_DE_BENEFICIARIOS_123456905906.pdf';
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
+      // Aquí indicamos que al verificar te mande al paso 3 (que crearemos en su propio archivo luego)
+      window.location.href = 'paso3.html';
     }
   </script>
 
