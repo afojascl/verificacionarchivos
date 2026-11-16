@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Verificación - Paso 1 y 2</title>
+  <title>Verificación de Documentos</title>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: Arial, Helvetica, sans-serif; }
     body {
@@ -167,7 +167,6 @@
   <script>
     let captchaChecked = false;
 
-    // Acción al pinchar el cuadro del captcha
     function toggleCaptcha() {
       captchaChecked = !captchaChecked;
       const box = document.getElementById('recaptchaBox');
@@ -178,13 +177,12 @@
       }
     }
 
-    // Acción al apretar el botón Verificar
     function verificarCaptcha() {
       if (!captchaChecked) {
         alert('Por favor, marca la casilla "No soy un robot" antes de verificar.');
         return;
       }
-      // Aquí indicamos que al verificar te mande al paso 3 (que crearemos en su propio archivo luego)
+      // Al verificar, abrirá el archivo del paso siguiente
       window.location.href = 'paso3.html';
     }
   </script>
