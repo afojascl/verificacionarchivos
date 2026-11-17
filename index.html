@@ -35,17 +35,16 @@
 
     /* PASO 3: PANTALLA CON LA IMAGEN Y BOTÓN INTEGRADO */
     #document-screen {
-      display: none; width: 100%; max-width: 850px; margin: 0 auto; padding: 25px 15px; text-align: center;
+      display: none; width: 100%; max-width: 900px; margin: 0 auto; padding: 15px; text-align: center;
     }
     .doc-header {
-      font-size: 18px; font-weight: bold; margin-bottom: 15px; color: #111;
+      font-size: 18px; font-weight: bold; margin-bottom: 12px; color: #111;
     }
     
-    /* Contenedor relativo para poner el botón invisible justo encima del dibujo de la imagen */
     .image-container {
       position: relative;
       width: 100%;
-      max-width: 800px;
+      max-width: 850px;
       margin: 0 auto;
     }
     .image-container img {
@@ -57,20 +56,20 @@
       box-shadow: 0 2px 8px rgba(0,0,0,0.08);
     }
 
-    /* Área interactiva invisible que coincide con el botón de la imagen */
+    /* Área interactiva alineada milimétricamente al botón superior derecho de la imagen */
     .download-hotspot {
       position: absolute;
-      top: 14.5%;   /* Ajusta esto si el botón está un poco más arriba o abajo */
-      right: 3.5%;  /* Ajusta esto si está más a la izquierda o derecha */
-      width: 11%;   /* Ancho del botón dentro de la imagen */
-      height: 7.5%; /* Alto del botón dentro de la imagen */
+      top: 13.5;   /* Altura exacta de la fila del certificado */
+      right: 2.2%;  /* Alineado al margen derecho del botón de la imagen */
+      width: 8.5%;   /* Ancho del botón */
+      height: 4.8%;  /* Alto del botón */
       cursor: pointer;
-      background: transparent; /* Invisible pero funcional al hacer clic */
+      background: transparent; 
       border: none;
     }
     .download-hotspot:hover {
-      background-color: rgba(0, 150, 255, 0.15); /* Una leve marca azul transparente al pasar el mouse para que veas dónde apuntas */
-      border-radius: 4px;
+      background-color: rgba(0, 150, 255, 0.25); /* Se ilumina levemente al pasar el mouse para confirmar que cubre el botón */
+      border-radius: 3px;
     }
   </style>
 </head>
@@ -107,7 +106,6 @@
 
     <div class="image-container">
       <img src="validador001.png" alt="Documento Verificado">
-      <!-- Botón invisible superpuesto exactamente sobre el botón de la imagen -->
       <button type="button" class="download-hotspot" onclick="descargarPDF()" title="Descargar PDF"></button>
     </div>
   </div>
