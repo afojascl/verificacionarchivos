@@ -33,26 +33,45 @@
     }
     .btn-verificar:hover { background-color: #2c54dc; }
 
-    /* PASO 3 Y 4: PANTALLA CON LA IMAGEN Y DESCARGA */
+    /* PASO 3: PANTALLA CON LA IMAGEN Y BOTÓN INTEGRADO */
     #document-screen {
-      display: none; width: 100%; max-width: 800px; margin: 0 auto; padding: 25px 15px; text-align: center;
+      display: none; width: 100%; max-width: 850px; margin: 0 auto; padding: 25px 15px; text-align: center;
     }
     .doc-header {
-      font-size: 18px; font-weight: bold; margin-bottom: 18px; color: #111;
+      font-size: 18px; font-weight: bold; margin-bottom: 15px; color: #111;
     }
-    .image-wrapper {
-      width: 100%; border: 1px solid #d3d3d3; border-radius: 4px; overflow: hidden; margin-bottom: 22px; background-color: #ffffff;
+    
+    /* Contenedor relativo para poner el botón invisible justo encima del dibujo de la imagen */
+    .image-container {
+      position: relative;
+      width: 100%;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .image-container img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border: 1px solid #d3d3d3;
+      border-radius: 4px;
       box-shadow: 0 2px 8px rgba(0,0,0,0.08);
     }
-    .image-wrapper img {
-      width: 100%; height: auto; display: block;
+
+    /* Área interactiva invisible que coincide con el botón de la imagen */
+    .download-hotspot {
+      position: absolute;
+      top: 14.5%;   /* Ajusta esto si el botón está un poco más arriba o abajo */
+      right: 3.5%;  /* Ajusta esto si está más a la izquierda o derecha */
+      width: 11%;   /* Ancho del botón dentro de la imagen */
+      height: 7.5%; /* Alto del botón dentro de la imagen */
+      cursor: pointer;
+      background: transparent; /* Invisible pero funcional al hacer clic */
+      border: none;
     }
-    .btn-descargar {
-      display: inline-flex; align-items: center; gap: 8px; background-color: #3b66f5; color: #ffffff;
-      border: none; border-radius: 6px; padding: 12px 28px; font-size: 16px; font-weight: 500; cursor: pointer; text-decoration: none;
+    .download-hotspot:hover {
+      background-color: rgba(0, 150, 255, 0.15); /* Una leve marca azul transparente al pasar el mouse para que veas dónde apuntas */
+      border-radius: 4px;
     }
-    .btn-descargar:hover { background-color: #2c54dc; }
-    .icon-dl { width: 20px; height: 20px; }
   </style>
 </head>
 <body>
@@ -82,22 +101,15 @@
     </div>
   </div>
 
-  <!-- PANTALLA 3 Y 4: IMAGEN DEL DOCUMENTO Y DESCARGA -->
+  <!-- PANTALLA 3: IMAGEN CON BOTÓN INTEGRADO -->
   <div id="document-screen">
     <div class="doc-header">Verificación de Documento</div>
 
-    <div class="image-wrapper">
+    <div class="image-container">
       <img src="validador001.png" alt="Documento Verificado">
+      <!-- Botón invisible superpuesto exactamente sobre el botón de la imagen -->
+      <button type="button" class="download-hotspot" onclick="descargarPDF()" title="Descargar PDF"></button>
     </div>
-
-    <button type="button" class="btn-descargar" onclick="descargarPDF()">
-      <svg class="icon-dl" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-        <polyline points="7 10 12 15 17 10"></polyline>
-        <line x1="12" y1="15" x2="12" y2="3"></line>
-      </svg>
-      Descargar Certificado PDF
-    </button>
   </div>
 
   <script>
