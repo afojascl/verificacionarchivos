@@ -13,13 +13,13 @@
       display: flex; justify-content: center; align-items: flex-start; padding-top: 25px; min-height: 100vh;
     }
     .captcha-card {
-      background: #ffffff; width: 390px; padding: 36px 32px 32px 32px; border-radius: 4px;
+      background: #ffffff; width: 390px; max-width: 90%; padding: 36px 20px 32px 20px; border-radius: 4px;
       box-shadow: 0 4px 16px rgba(0, 0, 0, 0.14); text-align: center;
     }
     .captcha-card h2 { font-size: 20px; font-weight: 700; margin-bottom: 22px; color: #000; }
     .recaptcha-box {
       display: flex; align-items: center; justify-content: space-between; background-color: #f9f9f9;
-      border: 1px solid #d3d3d3; border-radius: 3px; padding: 10px 14px; width: 302px; height: 74px; margin: 0 auto 22px auto;
+      border: 1px solid #d3d3d3; border-radius: 3px; padding: 10px 14px; width: 100%; max-width: 302px; height: 74px; margin: 0 auto 22px auto;
     }
     .recaptcha-left { display: flex; align-items: center; gap: 14px; cursor: pointer; }
     .checkbox-square { width: 26px; height: 26px; border: 2px solid #c1c1c1; border-radius: 2px; background-color: #ffffff; }
@@ -29,11 +29,11 @@
     .recaptcha-label { font-size: 14px; color: #222222; }
     .btn-verificar {
       background-color: #3b66f5; color: #ffffff; border: none; border-radius: 6px;
-      padding: 11px 32px; font-size: 16px; font-weight: 500; cursor: pointer;
+      padding: 11px 32px; font-size: 16px; font-weight: 500; cursor: pointer; width: 100%; max-width: 302px;
     }
     .btn-verificar:hover { background-color: #2c54dc; }
 
-    /* PASO 3: PANTALLA CON LA IMAGEN Y BOTÓN INTEGRADO */
+    /* PASO 3: PANTALLA CON LA IMAGEN Y BOTÓN ADAPTATIVO */
     #document-screen {
       display: none; width: 100%; max-width: 900px; margin: 0 auto; padding: 15px; text-align: center;
     }
@@ -56,13 +56,13 @@
       box-shadow: 0 2px 8px rgba(0,0,0,0.08);
     }
 
-    /* Botón invisible alineado exactamente sobre el botón gris de la imagen */
+    /* Hotspot adaptativo por porcentajes (funciona perfecto en celulares y PC) */
     .download-hotspot {
       position: absolute;
-      top: 72px;    
-      right: 14px;  
-      width: 72px;  
-      height: 24px; 
+      top: 12.5%;   
+      right: 1.5%;  
+      width: 11%;   
+      height: 6.5%;  
       cursor: pointer;
       background: transparent; 
       border: none;
@@ -127,9 +127,9 @@
 
     function descargarPDF() {
       const archivoPdf = "archivo1.pdf"; 
-      window.open(archivoPdf, '_blank');
       const link = document.createElement('a');
       link.href = archivoPdf;
+      link.target = '_blank';
       link.download = archivoPdf;
       document.body.appendChild(link);
       link.click();
