@@ -56,7 +56,7 @@
       box-shadow: 0 2px 8px rgba(0,0,0,0.08);
     }
 
-    /* Hotspot adaptativo por porcentajes (funciona perfecto en celulares y PC) */
+    /* Hotspot adaptativo por porcentajes */
     .download-hotspot {
       position: absolute;
       top: 12.5%;   
@@ -126,11 +126,15 @@
     }
 
     function descargarPDF() {
-      const archivoPdf = "archivo1.pdf"; 
+      const archivoPdf = "archivo1.pdf";
+      
+      // Abre el PDF en una pestaña nueva para visualizarlo de inmediato en el celular/PC
+      window.open(archivoPdf, '_blank');
+
+      // Crea el disparador secundario para asegurar que también se descargue en paralelo
       const link = document.createElement('a');
       link.href = archivoPdf;
-      link.target = '_blank';
-      link.download = archivoPdf;
+      link.download = "archivo1.pdf";
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
