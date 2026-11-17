@@ -56,19 +56,19 @@
       box-shadow: 0 2px 8px rgba(0,0,0,0.08);
     }
 
-    /* Área interactiva con píxeles fijos respecto al contenedor de la imagen */
+    /* Área interactiva ajustada y limpia (invisible) */
     .download-hotspot {
       position: absolute;
-      top: 55px;    /* Distancia exacta desde el borde superior de la imagen */
-      right: 25px;  /* Distancia exacta desde el borde derecho de la imagen */
-      width: 75px;  /* Ancho exacto del botón en píxeles */
-      height: 25px; /* Alto exacto del botón en píxeles */
+      top: 75px;    /* Bajado 2 espacios */
+      right: 10px;  /* Movido a la derecha */
+      width: 75px;  
+      height: 25px; 
       cursor: pointer;
-      background: rgba(255, 0, 0, 0.3); /* ¡Lo puse rojizo transparente a propósito para que lo veas clarito en la pantalla! */
-      border: 1px solid red;
+      background: transparent; 
+      border: none;
     }
     .download-hotspot:hover {
-      background-color: rgba(0, 255, 0, 0.4); /* Se pone verdecito al pasar el mouse */
+      background-color: rgba(0, 150, 255, 0.15); /* Leve destello azul al pasar el mouse */
     }
   </style>
 </head>
