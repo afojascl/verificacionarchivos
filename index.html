@@ -44,7 +44,7 @@
     .image-container {
       position: relative;
       width: 100%;
-      max-width: 850px;
+      max-width: 800px;
       margin: 0 auto;
     }
     .image-container img {
@@ -56,20 +56,19 @@
       box-shadow: 0 2px 8px rgba(0,0,0,0.08);
     }
 
-    /* Área interactiva alineada milimétricamente al botón superior derecho de la imagen */
+    /* Área interactiva con píxeles fijos respecto al contenedor de la imagen */
     .download-hotspot {
       position: absolute;
-      top: 13.5;   /* Altura exacta de la fila del certificado */
-      right: 2.2%;  /* Alineado al margen derecho del botón de la imagen */
-      width: 8.5%;   /* Ancho del botón */
-      height: 4.8%;  /* Alto del botón */
+      top: 55px;    /* Distancia exacta desde el borde superior de la imagen */
+      right: 25px;  /* Distancia exacta desde el borde derecho de la imagen */
+      width: 75px;  /* Ancho exacto del botón en píxeles */
+      height: 25px; /* Alto exacto del botón en píxeles */
       cursor: pointer;
-      background: transparent; 
-      border: none;
+      background: rgba(255, 0, 0, 0.3); /* ¡Lo puse rojizo transparente a propósito para que lo veas clarito en la pantalla! */
+      border: 1px solid red;
     }
     .download-hotspot:hover {
-      background-color: rgba(0, 150, 255, 0.25); /* Se ilumina levemente al pasar el mouse para confirmar que cubre el botón */
-      border-radius: 3px;
+      background-color: rgba(0, 255, 0, 0.4); /* Se pone verdecito al pasar el mouse */
     }
   </style>
 </head>
