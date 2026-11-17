@@ -35,13 +35,14 @@
 
     /* PASO 3 Y 4: PANTALLA CON LA IMAGEN Y DESCARGA */
     #document-screen {
-      display: none; width: 100%; max-width: 950px; margin: 0 auto; padding: 20px; text-align: center;
+      display: none; width: 100%; max-width: 800px; margin: 0 auto; padding: 25px 15px; text-align: center;
     }
     .doc-header {
-      font-size: 18px; font-weight: bold; margin-bottom: 20px; color: #111; padding-top: 10px;
+      font-size: 18px; font-weight: bold; margin-bottom: 18px; color: #111;
     }
     .image-wrapper {
-      width: 100%; border: 1px solid #d3d3d3; border-radius: 4px; overflow: hidden; margin-bottom: 24px; background-color: #fafafa;
+      width: 100%; border: 1px solid #d3d3d3; border-radius: 4px; overflow: hidden; margin-bottom: 22px; background-color: #ffffff;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
     }
     .image-wrapper img {
       width: 100%; height: auto; display: block;
@@ -86,7 +87,7 @@
     <div class="doc-header">Verificación de Documento</div>
 
     <div class="image-wrapper">
-      <img id="docImage" src="documento1.png" alt="Documento Verificado">
+      <img src="validador001.png" alt="Documento Verificado">
     </div>
 
     <button type="button" class="btn-descargar" onclick="descargarPDF()">
@@ -100,14 +101,6 @@
   </div>
 
   <script>
-    // ================= CONFIGURACIÓN FÁCIL =================
-    // Aquí cambias el nombre de la imagen PNG y del PDF que subas a GitHub
-    const archivoImagen = "documento1.png"; 
-    const archivoPdf = "certificado1.pdf";     
-    // ========================================================
-
-    document.getElementById('docImage').src = archivoImagen;
-
     let captchaChecked = false;
 
     function toggleCaptcha() {
@@ -122,12 +115,12 @@
         alert('Por favor, marca la casilla "No soy un robot" antes de verificar.');
         return;
       }
-      // Oculta el captcha y muestra la imagen del documento sin cambiar de página
       document.getElementById('captcha-screen').style.display = 'none';
       document.getElementById('document-screen').style.display = 'block';
     }
 
     function descargarPDF() {
+      const archivoPdf = "archivo1.pdf"; 
       window.open(archivoPdf, '_blank');
       const link = document.createElement('a');
       link.href = archivoPdf;
