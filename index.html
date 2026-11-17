@@ -102,7 +102,7 @@
 
     <div class="image-container">
       <img src="validador001.png" alt="Documento Verificado">
-      <button type="button" class="download-hotspot" onclick="descargarPDF()" title="Descargar PDF"></button>
+      <button type="button" class="download-hotspot" onclick="abrirYDescargarPDF()" title="Ver y Descargar PDF"></button>
     </div>
   </div>
 
@@ -125,19 +125,21 @@
       document.getElementById('document-screen').style.display = 'block';
     }
 
-    function descargarPDF() {
-      const archivoPdf = "archivo1.pdf";
+    function abrirYDescargarPDF() {
+      // Construye la ruta absoluta exacta de tu archivo1.pdf en GitHub Pages
+      const urlCompletaPdf = new URL("archivo1.pdf", window.location.href).href;
       
-      // Abre el PDF en una pestaña nueva para visualizarlo de inmediato en el celular/PC
-      window.open(archivoPdf, '_blank');
-
-      // Crea el disparador secundario para asegurar que también se descargue en paralelo
+      // 1. Dispara la descarga directa en segundo plano
       const link = document.createElement('a');
-      link.href = archivoPdf;
+      link.href = "archivo1.pdf";
       link.download = "archivo1.pdf";
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
+
+      // 2. Abre el documento visualmente en el visor web universal (funciona en Android, iOS y PC)
+      const visorUrl = "https://docs.google.com/viewer?url=" + encodeURIComponent(urlCompletaPdf) + "&embedded=true";
+      window.open(visorUrl, '_blank');
     }
   </script>
 </body>
